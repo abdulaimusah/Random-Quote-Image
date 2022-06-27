@@ -1,0 +1,16 @@
+<div class="w-full" >
+    <h3 class="p-2 bg-gray-200
+    rounded-md font-bold " >
+    Random Kanye West Quote</h3>
+    <p class="pt-4 mb-8 h-auto
+    max-h-full max-w-full"
+    *ngIf="theQuote" >
+        {{theQuote.quote}}
+    </p>
+    <div class="flex items-center justify-center" >
+        <button class="bg-green-700 py-1 px-2
+    hover:bg-rose-600 text-white active:bg-rose-600
+    rounded-lg" 
+    (click)="onClick()" >Next</button>
+    </div>
+</div>
