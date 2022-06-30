@@ -11,7 +11,7 @@ const routes: Routes = [
  // {path: "" , component: AppComponent}
  {path: "image", component: DogimageComponent},
  {path: "quote", component: QuoteComponent},
- //{path: "" , redirectTo: "dog/image" , pathMatch: "full"}
+ {path: "" , redirectTo: "image" , pathMatch: "full"}
 
 ];
 
