@@ -17,14 +17,24 @@ export class QuoteComponent implements OnInit {
     quote: ""
   };
 
+  isError: boolean = false;
+  isLoading: boolean = true;
+  
 
   getQuote(): void {
+    this.isLoading = true;
     this.fetchData.getQuote()
-    .subscribe(quote => this.theQuote = quote);
+    .subscribe({
+      next: quote => this.theQuote = quote,
+      error: err => {
+        this.isError = true;
+        this.isLoading = false
+      },
+      complete: () => this.isLoading = false
+    })
   }
 
   ngOnInit(): void {
-    
       this.getQuote();
   }
 

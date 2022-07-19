@@ -1,16 +1,45 @@
-<div class="w-full" >
+<div class="w-full " >
     <h3 class="p-2 mb-3 bg-gray-200
     rounded-md font-bold " >
     Random Kanye West Quote</h3>
+
+    <!-- Render this, if there is an error -->
+    <div *ngIf="isError" class=" m-auto " >
+        <p>
+            There was an error loading quote
+        </p>
+    </div>
+
+    <!-- Render this, when the first quote is loading -->
+    <div *ngIf="!theQuote" >
+        <app-textframe></app-textframe>
+    </div>
+
+    <!-- Render this, when a quote is loading-->
+    <div *ngIf="isLoading" 
+    class="relative" >
+        <app-picspinner></app-picspinner>
+    </div>
+
+    <!-- Render quote -->
     <p class="pt-4 mb-8 h-auto
     max-h-full max-w-full"
     *ngIf="theQuote" >
         {{theQuote.quote}}
     </p>
+
     <div class="flex items-center justify-center" >
-        <button class="bg-indigo-700 py-1 px-2
-        hover:bg-indigo-500 text-white active:bg-indigo-500
-        rounded-lg" 
-    (click)="onClick()" >Next</button>
+        
+        <!-- Display this button when image is not loading -->
+        <button *ngIf="!isLoading" class="bg-indigo-700 py-1 px-2
+    hover:bg-indigo-500 text-white active:bg-indigo-500
+    rounded-lg" 
+    (click)="onClick()"  >Next</button>
+        
+        <!-- Display this button when an image is loading-->
+        <button *ngIf="isLoading" class="bg-indigo-700 py-1 px-2
+    hover:bg-indigo-500 text-white active:bg-indigo-500
+    rounded-lg animate-bounce " 
+    (click)="onClick()"  >Next</button>
     </div>
 </div>

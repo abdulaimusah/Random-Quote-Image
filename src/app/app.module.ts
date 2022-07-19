@@ -10,6 +10,9 @@ import { DogimageComponent } from './dogimage/dogimage.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { QuoteComponent } from './quote/quote.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { PicspinnerComponent } from './picspinner/picspinner.component';
+import { TextframeComponent } from './textframe/textframe.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { QuoteComponent } from './quote/quote.component';
     DogimageComponent,
     FooterComponent,
     HeaderComponent,
-    QuoteComponent
+    QuoteComponent,
+    SpinnerComponent,
+    PicspinnerComponent,
+    TextframeComponent
   ],
   imports: [
     BrowserModule,

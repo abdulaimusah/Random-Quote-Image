@@ -15,20 +15,41 @@ export class DogimageComponent implements OnInit {
   imageSrc: any = "";
   dogImage: any = "";
 
-  rightImage(): boolean {
+  isError: boolean = false;
+  isLoading: boolean = false;
+
+
+  
+
+  /*rightImage(): boolean {
     if (this.imageSrc && (this.imageSrc.slice === "mp4")) {
       return false;
     }
-    return true;
-    
-  }
+    return true;  
+  }*/
+
 
   getImage(): void {
+    this.isLoading = true;
     this.fetchData.getImage()
-    .subscribe((res) => {
-      this.dogImage = res;
-      this.imageSrc = this.dogImage.url;
+    .subscribe({
+       next: (res: any) => {
+        this.dogImage = res;
+        this.imageSrc = this.dogImage.url;
+      },
+       error: (err: any) => {
+        if(err) {
+          this.isError = true;
+        }
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+        console.log(this.imageSrc);
+      }
     }); 
+
+    
   }
 
   ngOnInit(): void {
